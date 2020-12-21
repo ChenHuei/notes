@@ -112,4 +112,45 @@ Personal case:
 
 ### SVG sprite
 
+ 通常在專案中使用 svg 會有以下兩種方式
+
+1. Using SVG as an `img`
+
+利用 `img` 標籤來引入，此時 SVG 被視為一個圖檔載入
+
+```HTML
+<img src="icon.svg" />
+```
+
+優點：易讀
+
+缺點：當相同 icon 有其他顏色的需求時，就會需要不同顏色的 SVG !!
+
+2. Inline SVG
+
+直接將 `svg` 標籤放進 Html 結構中
+
+```HTML
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g fill-rule="evenodd" stroke="#EA475B" stroke-linecap="round">
+    <path d="M8 3.5v9M4.5 9.5l3.5 4 3.5-4"/>
+  </g>
+</svg>
+```
+
+優點：解決相同 SVG 改變顏色的問題
+
+缺點：難讀
+
+>  而這時候，SVG sprite 將可以綜合以下兩種方式的優點，成為我們的救星！
+
+根據[官方文件](https://github.com/JetBrains/svg-sprite-loader)的說明，配置 webpack 之後，將可把各個 icon 打包成同一個檔案 (`解決多個網路請求`)，並可透過父層給予 icon name and style 進行 svg 的圖片切換和改變顏色
+
+> 須將各個 SVG 檔裡的 fill 或 stroke 改成 currentColor (類似 inherit 的功用) 
+
+
 #### 2020/12/21
+
+##### 參考文件
+- https://medium.com/@f820602h/%E5%9C%A8-vue-%E8%81%B0%E6%98%8E%E4%BD%BF%E7%94%A8-svg-icon-87a172a1b47b
+- https://github.com/JetBrains/svg-sprite-loader
