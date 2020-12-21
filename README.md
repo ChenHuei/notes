@@ -42,7 +42,73 @@ Nginx
 
 ### VScode snippet
 
+Code snippets are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.
+
+select `User Snippets` under `File` > `Preferences` (`Code` > `Preferences` on macOS), and then select the language for which the snippets should appear, or the New Global Snippets file option if they should appear for all languages.
+
+```javascript=
+// in file 'Code/User/snippets/javascript.json'
+{
+  "For Loop": {
+    "prefix": ["for", "for-const"],
+    "body": ["for (const ${2:element} of ${1:array}) {", "\t$0", "}"],
+    "description": "A for loop."
+  }
+}
+```
+
+In the example above:
+
+1. `For Loop` is the snippet name. It is displayed via IntelliSense if no description is provided.
+2. `prefix` defines one or more trigger words that display the snippet in IntelliSense. Substring matching is performed on prefixes, so in this case, "fc" could match "for-const".
+3. `body` is one or more lines of content, which will be joined as multiple lines upon insertion. Newlines and embedded tabs will be formatted according to the context in which the snippet is inserted.
+4. `description` is an optional description of the snippet displayed by IntelliSense.
+
+Personal case:
+
+```javascript=
+{
+  "Vue Typescript Class": {
+    "scope": "vue",
+    "prefix": "vtc",
+    "body": [
+      "<template>",
+      "  <div>",
+      "    ",
+      "  </div>",
+      "</template>",
+      "",
+      "<script lang=\"ts\">",
+      "/**",
+      "  *  @author leo.chen ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "  *  @description description",
+      "  *",
+      "  *  @summary summary",
+      "  */",
+      "",
+      "import { Component, Vue } from 'vue-property-decorator';",
+      "",
+      "@Component",
+      "",
+      "export default class ${1} extends Vue {",
+      "  ",
+      "}",
+      "</script>",
+      "",
+      "<style lang=\"scss\" scoped>",
+      "  ",
+      "</style>"
+      ],
+    "description": "vue typescript class"
+  }
+}
+```
+
 #### 2020/12/14
+
+###### 參考來源
+
+- https://code.visualstudio.com/docs/editor/userdefinedsnippets
 
 ### SVG sprite
 
